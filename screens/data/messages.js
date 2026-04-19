@@ -1,0 +1,35 @@
+export const starredMessages = [
+  {
+    id: '1',
+    sender: 'SARAH JENKINS',
+    time: 'Yesterday, 2:30 PM',
+    text: "Absolutely! Let's schedule the mentorship session for next Tuesday. I've prepared some notes on the career transition strategy we discussed.",
+    starred: true,
+    isMe: false,
+  },
+  {
+    id: '2',
+    sender: 'YOU',
+    time: 'Oct 24, 10:15 AM',
+    text: "Here is the updated project timeline PDF. Could you review the milestones for Phase 2?",
+    starred: true,
+    isMe: true,
+    showUnstar: true,
+  },
+  {
+    id: '3',
+    sender: 'SARAH JENKINS',
+    time: 'Oct 12, 4:45 PM',
+    text: "Great work on the networking event! I think connecting with those three key contacts will be very beneficial for your long-term goals. Keep it up!",
+    starred: true,
+    isMe: false,
+  },
+  {
+    id: '4',
+    sender: 'SARAH JENKINS',
+    time: 'Sep 30, 9:00 AM',
+    text: "Don't forget to send over the draft before the weekend.",
+    starred: true,
+    isMe: false,
+  },
+];
