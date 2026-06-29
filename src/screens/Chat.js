@@ -15,26 +15,37 @@ import { Ionicons } from '@expo/vector-icons';
 import BottomNavBar from '../components/BottomNavbar';
 
 const MESSAGES = [
-  { id: '1', name: 'Sarah Jenkins', time: '10:42 AM', msg: 'Thanks for the mentorship sessi...', unread: 2, avatar: 'https://i.pravatar.cc/150?u=sarah' },
-  { id: '2', name: 'Michael Chen', time: 'Yesterday', msg: "Let's schedule a call for next ...", isNew: true, avatar: 'https://i.pravatar.cc/150?u=michael' },
-  { id: '3', name: 'David Ross', time: 'Tue', msg: 'Did you see the attachment?', status: 'delivered', avatar: 'https://i.pravatar.cc/150?u=david' },
+  { id: '1', name: 'Sarah Jenkins', time: '10:42 AM', msg: 'Thanks for the mentorship sessi...', unread: 2, avatar: require('../../assets/Avatar-1.jpg') },
+  { id: '2', name: 'Michael Chen', time: 'Yesterday', msg: "Let's schedule a call for next ...", isNew: true, avatar: require('../../assets/Avatar-2.jpg') },
+  { id: '3', name: 'David Ross', time: 'Tue', msg: 'Did you see the attachment?', status: 'delivered', avatar: require('../../assets/Avatar-2.jpg') },
   { id: '4', name: 'Sarah Jenkins', time: 'Last week', msg: "I'd love to connect on Li...", isEmail: true },
-  { id: '5', name: 'Elena Rodriguez', time: 'Mon', msg: "I'll send over the contract details s...", online: true, avatar: 'https://i.pravatar.cc/150?u=elena' },
-  { id: '6', name: 'James Wright', time: 'Jun 05', msg: 'Excellent insights, thank you!', avatar: 'https://i.pravatar.cc/150?u=james' },
+  { id: '5', name: 'Elena Rodriguez', time: 'Mon', msg: "I'll send over the contract details s...", online: true, avatar: require('../../assets/Avatar-1.jpg') },
+  { id: '6', name: 'James Wright', time: 'Jun 05', msg: 'Excellent insights, thank you!', avatar: require('../../assets/Avatar-2.jpg') },
 ];
 
 export default function Chat() {
   const navigation = useNavigation();
 
   const renderItem = ({ item }) => (
-    <View style={styles.chatItem}>
+    <TouchableOpacity
+      style={styles.chatItem}
+      onPress={() =>
+        navigation.navigate('ParticularChat', {
+          user: {
+            name: item.name,
+            image: item.avatar || `https://i.pravatar.cc/150?u=${item.id}`,
+            online: item.online || false,
+          },
+        })
+      }
+    >
       {item.isEmail ? (
         <View style={[styles.avatar, styles.emailAvatar]}>
           <Ionicons name="mail-outline" size={24} color="#00B2FF" />
         </View>
       ) : (
         <View>
-          <Image source={{ uri: item.avatar }} style={styles.avatar} />
+          <Image source={item.avatar} style={styles.avatar} />
           {item.online && <View style={styles.onlineDot} />}
           {item.unread > 0 && (
             <View style={styles.badge}>
@@ -55,7 +66,7 @@ export default function Chat() {
           <Text style={styles.messageText} numberOfLines={1}>{item.msg}</Text>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 
   return (

@@ -64,7 +64,7 @@ const BottomNavBar = ({ navigation, activeTab }) => {
 };
 
 const styles = StyleSheet.create({
-  navContainer: { position: 'absolute', bottom: 30, left: 20, right: 20 },
+  navContainer: { paddingHorizontal: 20, paddingVertical: 10, paddingBottom: 20 },
   navBar: {
     flexDirection: 'row',
     backgroundColor: '#2C3E50',
