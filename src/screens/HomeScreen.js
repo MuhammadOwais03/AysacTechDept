@@ -47,7 +47,7 @@ const HomeScreen = () => {
         <Text style={styles.metricText}>{metric}</Text>
       </View>
 
-      {/* Pricing Model Section - NEW */}
+      {/* Pricing Model Sectio */}
       <View style={styles.pricingRow}>
         <View>
           <Text style={styles.pricingLabel}>PRICING MODEL</Text>
@@ -68,12 +68,11 @@ const HomeScreen = () => {
     <SafeAreaView style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 20 }}>
         
-       {/* Change this block in your HomeScreen */}
+     
 <View style={styles.header}>
   <Text style={styles.logoText}>AYASC</Text>
   <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
     <Ionicons name="notifications-outline" size={24} color="#555" />
-    {/* Optional: Added a notification badge to match the dashboard style */}
     <View style={{
       position: 'absolute',
       top: -2,
