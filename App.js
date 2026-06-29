@@ -25,6 +25,9 @@ import ChatSettings from './src/screens/ChatSettings';
 import ArchieveChat from './src/screens/ArchieveChat';
 import EngineerOfMonth from './src/screens/EngineerOfMonth'; 
 import Notification from './src/screens/Notification';
+import ProjectTimeline from './src/screens/ProjectTimeline'; 
+import TechnicalTask from './src/screens/TechnicalTask';
+import HospitalWebsite from './src/screens/HospitalWebsite';
 
 const Stack = createStackNavigator();
 
@@ -54,6 +57,9 @@ export default function App() {
         <Stack.Screen name="ArchieveChat" component={ArchieveChat} />
         <Stack.Screen name="EngineerOfMonth" component={EngineerOfMonth} />
         <Stack.Screen name="Notification" component={Notification} />
+        <Stack.Screen name="ProjectTimeline" component={ProjectTimeline} /> 
+        <Stack.Screen name="TechnicalTask" component={TechnicalTask} />
+        <Stack.Screen name="HospitalWebsite" component={HospitalWebsite} />
       </Stack.Navigator>
     </NavigationContainer>
   );
