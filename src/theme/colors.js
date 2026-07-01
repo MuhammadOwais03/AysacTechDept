@@ -8,7 +8,7 @@ export const theme = {
     accent: '#3498db',
   },
   light: {
-    background: '#F0F8FF',
+    background: '#c2e6fa',
     card: '#FFFFFF',
     cardBorder: '#E1E9F5',
     text: '#000000',

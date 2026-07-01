@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
+import glowIcon from '../../assets/glow.png';
 
 const BottomNavBar = ({ navigation, activeTab }) => {
   return (
@@ -22,7 +23,7 @@ const BottomNavBar = ({ navigation, activeTab }) => {
           </View>
         </TouchableOpacity>
 
-        {/* Center Glow Button */}
+          {/* Center Glow Button */}
         <View style={styles.centerButtonContainer}>
           <LinearGradient 
             colors={["rgba(0, 210, 255, 0.5)", "rgba(58, 123, 213, 0.2)"]} 
@@ -32,20 +33,20 @@ const BottomNavBar = ({ navigation, activeTab }) => {
             style={styles.centerButton} 
             onPress={() => navigation.navigate('Dashboard')}
           >
-            <Ionicons name="sunny-outline" size={28} color="#00D2FF" /> 
+            <Image source={glowIcon} style={styles.glowIcon} resizeMode="contain" />
           </TouchableOpacity>
         </View>
 
-      {/* Chat Button */}
-<TouchableOpacity onPress={() => navigation.navigate('Chat')}> 
-  <View style={activeTab === 'Chat' ? styles.activeIconWrap : null}>
-    <Ionicons 
-      name={activeTab === 'Chat' ? "chatbox" : "chatbox-outline"} 
-      size={24} 
-      color={activeTab === 'Chat' ? '#00D2FF' : '#8E8E8E'} 
-    />
-  </View>
-</TouchableOpacity>
+        {/* Chat Button */}
+        <TouchableOpacity onPress={() => navigation.navigate('Chat')}>
+          <View style={activeTab === 'Chat' ? styles.activeIconWrap : null}>
+            <Ionicons 
+              name={activeTab === 'Chat' ? "chatbox" : "chatbox-outline"} 
+              size={24} 
+              color={activeTab === 'Chat' ? '#00D2FF' : '#8E8E8E'} 
+            />
+          </View>
+        </TouchableOpacity>
 
         {/* Profile Button - UPDATED */}
         <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
@@ -99,7 +100,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     backgroundColor: '#34495E',
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.2)',
+    // borderColor: 'rgba(255,255,255,0.2)',
     justifyContent: 'center',
     alignItems: 'center',
     zIndex: 2,
@@ -108,6 +109,10 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
     elevation: 8,
   },
+  glowIcon: {
+  width: '100%',
+  height: '100%',
+},
   activeIconWrap: {
     backgroundColor: 'rgba(0,210,255,0.12)',
     borderRadius: 18,

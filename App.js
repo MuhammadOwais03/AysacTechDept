@@ -53,6 +53,9 @@ import ArchieveChat from './src/screens/ArchieveChat';
 import EngineerOfMonth from './src/screens/EngineerOfMonth';
 
 import Notification from './src/screens/Notification';
+import ProjectTimeline from './src/screens/ProjectTimeline'; 
+import TechnicalTask from './src/screens/TechnicalTask';
+import HospitalWebsite from './src/screens/HospitalWebsite';
 
 import ContractsTemplate from './src/screens/ContractsTemplate';
 import InvoiceIcon from './src/screens/InvoiceIcon';
@@ -128,18 +131,9 @@ export default function App() {
         <Stack.Screen name="EngineerOfMonth" component={EngineerOfMonth} />
 
         <Stack.Screen name="Notification" component={Notification} />
-
-        <Stack.Screen name="ContractsTemplate" component={ContractsTemplate} />
-        <Stack.Screen name="InvoiceIcon" component={InvoiceIcon} />
-        <Stack.Screen name="Preview" component={Preview} />
-        <Stack.Screen name="Editor" component={Editor} />
-
-        <Stack.Screen name="AddFromRules" component={AddFromRules} />
-
-        {/* 2. REGISTER THE INVOICING SCREEN HERE */}
-
-        <Stack.Screen name="InvoicingScreen" component={InvoicingScreen} />
-
+        <Stack.Screen name="ProjectTimeline" component={ProjectTimeline} /> 
+        <Stack.Screen name="TechnicalTask" component={TechnicalTask} />
+        <Stack.Screen name="HospitalWebsite" component={HospitalWebsite} />
       </Stack.Navigator>
 
     </NavigationContainer>
