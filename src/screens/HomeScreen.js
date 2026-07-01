@@ -47,7 +47,7 @@ const HomeScreen = () => {
         <Text style={styles.metricText}>{metric}</Text>
       </View>
 
-      {/* Pricing Model Section - NEW */}
+      {/* Pricing Model Sectio */}
       <View style={styles.pricingRow}>
         <View>
           <Text style={styles.pricingLabel}>PRICING MODEL</Text>
@@ -66,14 +66,13 @@ const HomeScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 120 }}>
+      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 20 }}>
         
-       {/* Change this block in your HomeScreen */}
+     
 <View style={styles.header}>
   <Text style={styles.logoText}>AYASC</Text>
   <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
     <Ionicons name="notifications-outline" size={24} color="#555" />
-    {/* Optional: Added a notification badge to match the dashboard style */}
     <View style={{
       position: 'absolute',
       top: -2,
@@ -168,7 +167,7 @@ const HomeScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#E3F2FD' },
+  container: { flex: 1, backgroundColor: '#E3F2FD', flexDirection: 'column' },
   header: { flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 20, paddingTop: 50, paddingBottom: 15, alignItems: 'center' },
   logoText: { fontSize: 22, fontWeight: 'bold', color: '#00D2FF', letterSpacing: 1 },
   sectionTitle: { fontSize: 14, color: '#888', paddingHorizontal: 20, marginBottom: 15 },
