@@ -67,6 +67,7 @@ import AddFromRules from './src/screens/AddFromRules';
 
 
 
+
 // 1. IMPORT YOUR INVOICING SCREEN HERE (Make sure path matches your file name)
 
 import InvoicingScreen from './src/screens/InvoicingScreen';
@@ -134,6 +135,36 @@ export default function App() {
         <Stack.Screen name="ProjectTimeline" component={ProjectTimeline} /> 
         <Stack.Screen name="TechnicalTask" component={TechnicalTask} />
         <Stack.Screen name="HospitalWebsite" component={HospitalWebsite} />
+        <Stack.Screen
+          name="ContractsTemplate"
+          component={ContractsTemplate}
+        />
+
+        <Stack.Screen
+          name="InvoiceIcon"
+          component={InvoiceIcon}
+        />
+
+        <Stack.Screen
+          name="Preview"
+          component={Preview}
+        />
+
+        <Stack.Screen
+          name="Editor"
+          component={Editor}
+        />
+
+        <Stack.Screen
+          name="RulesRegulation"
+          component={AddFromRules}
+        />
+
+        <Stack.Screen
+          name="InvoicingScreen"
+          component={InvoicingScreen}
+        />
+      
       </Stack.Navigator>
 
     </NavigationContainer>
