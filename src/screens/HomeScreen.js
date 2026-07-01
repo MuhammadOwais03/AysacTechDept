@@ -129,6 +129,38 @@ const HomeScreen = () => {
           metric="Identified untapped customer segments, resulting in $200k boost."
           price="$8,900"
         />
+
+
+        {/* Timeline Button */}
+<TouchableOpacity
+  style={styles.timelineBtn}
+  onPress={() => navigation.navigate('ProjectTimeline')}
+  activeOpacity={0.85}
+>
+  <Ionicons name="calendar-outline" size={18} color="#fff" />
+  <Text style={styles.timelineBtnText}>Set Project Timeline</Text>
+</TouchableOpacity>
+
+        {/* Technical Task Button */}
+<TouchableOpacity
+  style={styles.timelineBtn}
+  onPress={() => navigation.navigate('TechnicalTask')}
+  activeOpacity={0.85}
+>
+  <Ionicons name="calendar-outline" size={18} color="#fff" />
+  <Text style={styles.timelineBtnText}>Create Technical Task</Text>
+</TouchableOpacity>
+
+        {/* Hospital Website Button */}
+<TouchableOpacity
+  style={styles.timelineBtn}
+  onPress={() => navigation.navigate('HospitalWebsite')}
+  activeOpacity={0.85}
+>
+  <Ionicons name="globe" size={18} color="#fff" />
+  <Text style={styles.timelineBtnText}>Visit Hospital Website</Text>
+</TouchableOpacity>
+
       </ScrollView>
       <BottomNavBar navigation={navigation} activeTab="Home" />
     </SafeAreaView>
@@ -166,7 +198,35 @@ const styles = StyleSheet.create({
   priceValue: { fontSize: 20, fontWeight: 'bold', color: '#00D2FF' },
   priceUnit: { fontSize: 12, color: '#ccc' },
   detailsBtn: { backgroundColor: '#1C1F26', paddingHorizontal: 24, paddingVertical: 10, borderRadius: 12 },
-  detailsBtnText: { color: '#fff', fontSize: 14, fontWeight: 'bold' }
+  detailsBtnText: { color: '#fff', fontSize: 14, fontWeight: 'bold' },
+
+
+// Buttons for Timeline, Technical Task, and Hospital Website
+
+  timelineBtn: {
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'center',
+  gap: 8,
+  backgroundColor: '#00D2FF',
+  marginHorizontal: 20,
+  marginBottom: 12,
+  paddingVertical: 14,
+  borderRadius: 16,
+  shadowColor: '#00D2FF',
+  shadowOpacity: 0.3,
+  shadowRadius: 8,
+  shadowOffset: { width: 0, height: 4 },
+  elevation: 4,
+},
+timelineBtnText: {
+  color: '#fff',
+  fontSize: 15,
+  fontWeight: '700',
+  letterSpacing: 0.3,
+},
+
+
 });
 
 export default HomeScreen;
