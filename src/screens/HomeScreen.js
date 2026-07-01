@@ -85,6 +85,19 @@ const HomeScreen = () => {
       borderColor: '#E3F2FD'
     }} />
   </TouchableOpacity>
+
+{/* EXTRA BUTTON FOR TESTING */}
+
+<TouchableOpacity
+  style={styles.timelineBtn}
+  onPress={() => navigation.navigate('DashboardSettings')}
+  activeOpacity={0.85}
+>
+  <Ionicons name="folder-open-outline" size={18} color="#fff" />
+  <Text style={styles.timelineBtnText}>Test button</Text>
+</TouchableOpacity>
+
+{/* EXTRA BUTTON FOR TESTING */}
 </View>
 
         <Text style={styles.sectionTitle}>Internal Updates</Text>
@@ -159,6 +172,8 @@ const HomeScreen = () => {
   <Ionicons name="globe" size={18} color="#fff" />
   <Text style={styles.timelineBtnText}>Visit Hospital Website</Text>
 </TouchableOpacity>
+
+
 
       </ScrollView>
       <BottomNavBar navigation={navigation} activeTab="Home" />
