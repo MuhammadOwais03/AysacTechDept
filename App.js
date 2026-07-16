@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 
 
+
 // Existing Screens
 
 import HomeScreen from './src/screens/HomeScreen';
@@ -64,6 +65,15 @@ import Editor from './src/screens/Editor';
 import VisitProfile from './src/screens/VisitProfile';
 
 import AddFromRules from './src/screens/AddFromRules';
+
+import ProfitAnalysis from './src/screens/ProfitAnalysis';
+import ITVEPvtLtd from './src/screens/ITVEPvtLtd';
+import AIProjects from './src/screens/AIProjects';
+
+import Departments from './src/screens/Departments';
+import SalesAndMarketing from './src/screens/SalesAndMarketing';
+import ExecutivePorfolio from './src/screens/ExecutivePortfolio';
+
 
 
 
@@ -135,6 +145,15 @@ export default function App() {
         <Stack.Screen name="ProjectTimeline" component={ProjectTimeline} /> 
         <Stack.Screen name="TechnicalTask" component={TechnicalTask} />
         <Stack.Screen name="HospitalWebsite" component={HospitalWebsite} />
+        <Stack.Screen name="ProfitAnalysis" component={ProfitAnalysis} />
+        <Stack.Screen name="ITVEPvtLtd" component={ITVEPvtLtd} />
+        <Stack.Screen name="AIProjects" component={AIProjects} />
+
+        <Stack.Screen name="Departments" component={Departments} />
+        <Stack.Screen name="SalesAndMarketing" component={SalesAndMarketing} />
+        <Stack.Screen name="ExecutivePortfolio" component={ExecutivePorfolio} />
+
+
         <Stack.Screen
           name="ContractsTemplate"
           component={ContractsTemplate}

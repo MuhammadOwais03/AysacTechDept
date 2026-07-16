@@ -160,6 +160,48 @@ const HomeScreen = () => {
   <Text style={styles.timelineBtnText}>Visit Hospital Website</Text>
 </TouchableOpacity>
 
+        {/* Profit Analysis Button */}
+<TouchableOpacity
+  style={styles.timelineBtn}
+  onPress={() => navigation.navigate('ProfitAnalysis')}
+  activeOpacity={0.85}
+>
+  <Ionicons name="globe" size={18} color="#fff" />
+  <Text style={styles.timelineBtnText}>View Profit Analysis</Text>
+</TouchableOpacity>
+
+        {/* ITVE Ltd Button */}
+<TouchableOpacity
+  style={styles.timelineBtn}
+  onPress={() => navigation.navigate('ITVEPvtLtd')}
+  activeOpacity={0.85}
+>
+  <Ionicons name="globe" size={18} color="#fff" />
+  <Text style={styles.timelineBtnText}>View ITVE Ltd Profile</Text>
+</TouchableOpacity>
+
+        {/* AI Projects Button */}
+<TouchableOpacity
+  style={styles.timelineBtn}
+  onPress={() => navigation.navigate('AIProjects')}
+  activeOpacity={0.85}
+>
+  <Ionicons name="globe" size={18} color="#fff" />
+  <Text style={styles.timelineBtnText}>View AI Projects</Text>
+</TouchableOpacity>
+
+        {/* Departments Button */}
+<TouchableOpacity
+  style={styles.timelineBtn}
+  onPress={() => navigation.navigate('Departments')}
+  activeOpacity={0.85}
+>
+  <Ionicons name="globe" size={18} color="#fff" />
+  <Text style={styles.timelineBtnText}>View Departments</Text>
+</TouchableOpacity>
+
+
+
       </ScrollView>
       <BottomNavBar navigation={navigation} activeTab="Home" />
     </SafeAreaView>
