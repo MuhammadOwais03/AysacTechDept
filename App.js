@@ -54,7 +54,7 @@ import ArchieveChat from './src/screens/ArchieveChat';
 import EngineerOfMonth from './src/screens/EngineerOfMonth';
 
 import Notification from './src/screens/Notification';
-import ProjectTimeline from './src/screens/ProjectTimeline'; 
+import ProjectTimeline from './src/screens/ProjectTimeline';
 import TechnicalTask from './src/screens/TechnicalTask';
 import HospitalWebsite from './src/screens/HospitalWebsite';
 
@@ -76,6 +76,11 @@ import ExecutivePorfolio from './src/screens/ExecutivePortfolio';
 
 
 
+import Activeprojects from './src/screens/Activeprojects';
+import WeeklyGoalsScreen from './src/screens/WeeklyGoalsScreen';
+import ProfileRankScreen from './src/screens/ProfileRankScreen';
+import XPHistoryScreen from './src/screens/XPHistoryScreen';
+import DashboardSettingsScreen from './src/screens/DashboardSettingsScreen';
 
 
 // 1. IMPORT YOUR INVOICING SCREEN HERE (Make sure path matches your file name)
@@ -142,7 +147,7 @@ export default function App() {
         <Stack.Screen name="EngineerOfMonth" component={EngineerOfMonth} />
 
         <Stack.Screen name="Notification" component={Notification} />
-        <Stack.Screen name="ProjectTimeline" component={ProjectTimeline} /> 
+        <Stack.Screen name="ProjectTimeline" component={ProjectTimeline} />
         <Stack.Screen name="TechnicalTask" component={TechnicalTask} />
         <Stack.Screen name="HospitalWebsite" component={HospitalWebsite} />
         <Stack.Screen name="ProfitAnalysis" component={ProfitAnalysis} />
@@ -183,7 +188,28 @@ export default function App() {
           name="InvoicingScreen"
           component={InvoicingScreen}
         />
-      
+
+        <Stack.Screen
+          name="Activeprojects"
+          component={Activeprojects}
+        />
+
+        <Stack.Screen
+          name="WeeklyGoalsScreen"
+          component={WeeklyGoalsScreen}
+        />
+
+        <Stack.Screen
+          name="ProfileRank"
+          component={ProfileRankScreen}
+        />
+
+        <Stack.Screen name="DashboardSettings" component={DashboardSettingsScreen} />
+
+
+        <Stack.Screen name="XPHistory" component={XPHistoryScreen} />
+
+
       </Stack.Navigator>
 
     </NavigationContainer>
