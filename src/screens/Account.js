@@ -1,177 +1,427 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  SafeAreaView,
-  ScrollView,
-  TextInput,
-  StatusBar,
-} from 'react-native';
-import { Ionicons, MaterialCommunityIcons, Feather } from '@expo/vector-icons';
-import { LinearGradient } from 'expo-linear-gradient';
+import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity, ScrollView, SafeAreaView } from 'react-native';
+import { Ionicons, FontAwesome5, MaterialCommunityIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
-export default function ProfileAccount({ navigation }) {
-  // Helper for Common Topics list items
-  const TopicItem = ({ title }) => (
-    <TouchableOpacity style={styles.topicItem}>
-      <Text style={styles.topicText}>{title}</Text>
-      <Feather name="chevron-right" size={20} color="#C4D1D9" />
-    </TouchableOpacity>
-  );
+const ACTION_ITEMS = [
+  {
+    id: 'delete',
+    icon: 'trash',
+    iconColor: '#D32F2F',
+    iconBgColor: '#FFEBEE',
+    title: 'Delete Account',
+    badgeText: 'IRREVERSIBLE',
+    badgeColor: '#D32F2F',
+    badgeBgColor: '#FFEBEE',
+    subtitle: 'Permanently remove a worker and purge associated operation logs.',
+    authRequirement: 'AUTH REQUIRED: PRESIDENT - CEO - MD',
+  },
+  {
+    id: 'freeze',
+    icon: 'snowflake',
+    iconColor: '#1976D2',
+    iconBgColor: '#E3F2FD',
+    title: 'Freeze Account',
+    subtitle: 'Suspend all platform access immediately.',
+    authRequirement: 'AUTH REQUIRED: TIER 1 EXEC - HR LEAD',
+  },
+  {
+    id: 'rank_change',
+    icon: 'medal',
+    iconColor: '#00796B',
+    iconBgColor: '#E0F2F1',
+    title: 'Rank Change',
+    subtitle: 'Adjust hierarchical standing.',
+    authRequirement: 'AUTH REQUIRED: DIRECT SUPERVISOR +',
+    rankButtons: true,
+  },
+  {
+    id: 'balance_correction',
+    icon: 'wallet',
+    iconColor: '#388E3C',
+    iconBgColor: '#E8F5E9',
+    title: 'Balance Correction',
+    subtitle: 'Apply manual ledger adjustments.',
+    authRequirement: 'AUTH REQUIRED: FINANCE DIRECTOR',
+    chevron: true,
+  },
+];
+
+export default function ProfileAccount() {
+  const navigation = useNavigation();
 
   return (
-    <View style={styles.container}>
-      <StatusBar barStyle="dark-content" />
-      {/* Background Gradient matches the soft sky blue tint */}
-      <LinearGradient colors={['#D6EFFF', '#F0F9FF']} style={StyleSheet.absoluteFill} />
-
-      <SafeAreaView style={{ flex: 1 }}>
-        {/* Header - Linked to Settings */}
+    <SafeAreaView style={styles.container}>
+      <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+        
+        {/* === CORRECTED HEADER SECTION === */}
         <View style={styles.header}>
-          <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
-            <Ionicons name="arrow-back" size={24} color="#5A6B87" />
+          <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
+            <Ionicons name="arrow-back" size={20} color="#1A1A1A" />
           </TouchableOpacity>
-          <Text style={styles.headerTitle}>Profile & Account</Text>
-          <View style={{ width: 24 }} />
+          
+          {/* Gavel / Legal / Auth Icon on the top right */}
+          <TouchableOpacity style={styles.rightHeaderIcon}>
+            <MaterialCommunityIcons name="gavel" size={28} color="#114C5A" />
+          </TouchableOpacity>
         </View>
 
-        <ScrollView contentContainerStyle={styles.scrollContainer} showsVerticalScrollIndicator={false}>
-          {/* Search Bar */}
-          <View style={styles.searchContainer}>
-            <TextInput 
-              placeholder="Search profile help..." 
-              placeholderTextColor="#A3B8C8" 
-              style={styles.searchInput} 
-            />
-            <Feather name="search" size={20} color="#A3B8C8" />
-          </View>
-
-          {/* Manage Your Profile Card */}
-          <View style={styles.manageCard}>
-            <View style={styles.profileIconBox}>
-              <MaterialCommunityIcons name="account-cog-outline" size={26} color="#9C27B0" />
-            </View>
-            <View>
-              <Text style={styles.manageTitle}>Manage Your Profile</Text>
-              <Text style={styles.manageSub}>Update personal details & security</Text>
-            </View>
-          </View>
-
-          {/* Common Topics Section */}
-          <View style={styles.topicsCard}>
-            <Text style={styles.sectionLabel}>COMMON TOPICS</Text>
+        {/* === CORRECTED PROFILE SECTION === */}
+        <View style={styles.profileSection}>
+          <Image 
+            source={require('../../assets/Avatar-2.jpg')} 
+            style={styles.avatar} 
+          />
+          <View style={styles.profileDetails}>
+            <Text style={styles.profileName}>M Talha Nawaz</Text>
             
-            <TopicItem title="Changing Your Username" />
-            <TopicItem title="Updating Business Details" />
-            <TopicItem title="Security & Password Settings" />
-            <TopicItem title="Privacy Preferences" />
-          </View>
-
-          {/* Help Footer */}
-          <View style={styles.helpFooter}>
-            <Text style={styles.helpTitle}>Still need help?</Text>
-            <Text style={styles.helpSub}>
-              Our support team is available 24/7 to assist you with any issues related to your account.
-            </Text>
-            <View style={styles.footerBtns}>
-              <TouchableOpacity style={styles.chatBtn}>
-                <Feather name="monitor" size={18} color="#FFF" />
-                <Text style={styles.chatBtnText}>Live Chat</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.emailBtn}>
-                <Feather name="mail" size={18} color="#5A6B87" />
-                <Text style={styles.emailBtnText}>Email Us</Text>
-              </TouchableOpacity>
+            {/* Styled precisely as shown in the screenshot */}
+            <View style={styles.presidentBadge}>
+              <View style={styles.dot} />
+              <Text style={styles.presidentBadgeText}>President</Text>
+            </View>
+            
+            <View style={styles.tierBadge}>
+              <Text style={styles.tierText}>TIER 1 EXECUTIVE OPERATIONS</Text>
             </View>
           </View>
-        </ScrollView>
-      </SafeAreaView>
-    </View>
+        </View>
+
+        {/* === CORRECTED SEARCH SECTION === */}
+        <View style={styles.searchContainer}>
+          <Ionicons name="search" size={20} color="#6C7A89" style={styles.searchIcon} />
+          <TextInput 
+            placeholder="Search worker by name, ID or rank..."
+            placeholderTextColor="#8C9A9E"
+            style={styles.searchInput}
+          />
+          <TouchableOpacity style={styles.filterButton}>
+            <Ionicons name="options-outline" size={20} color="#333" />
+          </TouchableOpacity>
+        </View>
+
+        {/* === SECTION HEADER === */}
+        <Text style={styles.sectionHeader}>WORKER ACTIONS</Text>
+
+        {/* === ACTION CARDS === */}
+        <View style={styles.actionsContainer}>
+          {ACTION_ITEMS.map((item) => (
+            <TouchableOpacity
+              key={item.id}
+              style={styles.actionCard}
+              activeOpacity={0.85}
+              onPress={() => item.id === 'delete' && navigation.navigate('Restricted')}
+            >
+              <View style={styles.cardTop}>
+                <View style={[styles.iconWrapper, { backgroundColor: item.iconBgColor }]}>
+                  <FontAwesome5 name={item.icon} size={20} color={item.iconColor} />
+                </View>
+                <View style={styles.cardTextWrapper}>
+                  <View style={styles.titleRow}>
+                    <Text style={styles.cardTitle}>{item.title}</Text>
+                    {item.badgeText && (
+                      <View style={[styles.titleBadge, { backgroundColor: item.badgeBgColor }]}>
+                        <Text style={[styles.titleBadgeText, { color: item.badgeColor }]}>{item.badgeText}</Text>
+                      </View>
+                    )}
+                  </View>
+                  <Text style={styles.cardSubtitle}>{item.subtitle}</Text>
+                </View>
+              </View>
+
+              {item.rankButtons && (
+                <View style={styles.rankButtonRow}>
+                  <TouchableOpacity style={styles.rankUpBtn}>
+                    <Ionicons name="arrow-up" size={12} color="#FFF" />
+                    <Text style={styles.rankUpText}>Up</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={styles.rankDownBtn}>
+                    <Ionicons name="arrow-down" size={12} color="#4A5568" />
+                    <Text style={styles.rankDownText}>Down</Text>
+                  </TouchableOpacity>
+                </View>
+              )}
+
+              {item.chevron && (
+                <TouchableOpacity style={styles.cardChevron}>
+                  <Ionicons name="chevron-forward" size={14} color="#555" />
+                </TouchableOpacity>
+              )}
+
+              <Text style={styles.authRequirementText}>{item.authRequirement}</Text>
+            </TouchableOpacity>
+          ))}
+        </View>
+
+        {/* === WARNING NOTICE === */}
+        <View style={styles.importantNotice}>
+          <Ionicons name="warning" size={20} color="#C05621" />
+          <Text style={styles.noticeText}>
+            Important: Balance increases are not corrected in-system directly. You must file a Level 2 authorization request through the central ledger before proceeding.
+          </Text>
+        </View>
+
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1 },
-  header: { 
-    flexDirection: 'row', 
-    alignItems: 'center', 
-    justifyContent: 'space-between', 
-    paddingHorizontal: 20, 
-    paddingVertical: 15 
+  container: {
+    flex: 1,
+    backgroundColor: '#EDF1F6', 
   },
-  headerTitle: { fontSize: 19, fontWeight: '700', color: '#1E293B' },
-  scrollContainer: { paddingHorizontal: 20, paddingBottom: 40 },
-  searchContainer: { 
-    flexDirection: 'row', 
-    backgroundColor: '#FFF', 
-    borderRadius: 18, 
-    paddingHorizontal: 18, 
-    height: 54, 
-    alignItems: 'center', 
+  scrollContent: {
+    paddingBottom: 40,
+  },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+    paddingTop: 16,
+    paddingBottom: 8,
+  },
+  backButton: {
+    width: 42,
+    height: 42,
+    borderRadius: 21,
+    backgroundColor: '#FFF',
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.05,
+    shadowRadius: 4,
+    elevation: 2,
+  },
+  rightHeaderIcon: {
+    padding: 6,
+  },
+  profileSection: {
+    flexDirection: 'row',
+    paddingHorizontal: 20,
+    marginTop: 10,
     marginBottom: 20,
-    shadowColor: '#000', shadowOpacity: 0.02, shadowRadius: 10, elevation: 2
+    alignItems: 'center',
   },
-  searchInput: { flex: 1, fontSize: 16, color: '#334155' },
-  manageCard: { 
+  avatar: {
+    width: 72,
+    height: 72,
+    borderRadius: 36,
+    borderWidth: 1,
+    borderColor: '#E2E8F0',
+  },
+  profileDetails: {
+    flex: 1,
+    marginLeft: 18,
+  },
+  profileName: {
+    fontSize: 19,
+    fontWeight: '700',
+    color: '#2D3748',
+    marginBottom: 4,
+  },
+  presidentBadge: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'rgba(227, 242, 253, 0.7)', 
-    borderRadius: 24, 
-    padding: 20, 
-    marginBottom: 15,
     borderWidth: 1,
-    borderColor: '#D0E9F5'
+    borderColor: '#CBD5E0',
+    backgroundColor: '#F7FAFC',
+    paddingHorizontal: 10,
+    paddingVertical: 3,
+    borderRadius: 12,
+    alignSelf: 'flex-start',
+    marginBottom: 6,
   },
-  profileIconBox: { 
-    width: 48, height: 48, borderRadius: 24, 
-    backgroundColor: '#F3E5F5', justifyContent: 'center', 
-    alignItems: 'center', marginRight: 15 
+  dot: {
+    width: 5,
+    height: 5,
+    borderRadius: 2.5,
+    backgroundColor: '#114C5A', 
+    marginRight: 6,
   },
-  manageTitle: { fontSize: 17, fontWeight: '700', color: '#1E293B' },
-  manageSub: { fontSize: 13, color: '#64748B', marginTop: 2 },
-  topicsCard: { 
-    backgroundColor: '#FFF', 
-    borderRadius: 28, 
-    padding: 22, 
-    shadowColor: '#000', shadowOpacity: 0.03, shadowRadius: 15, elevation: 3,
-    marginBottom: 20
+  presidentBadgeText: {
+    fontSize: 11,
+    color: '#114C5A',
+    fontWeight: '700',
   },
-  sectionLabel: { 
-    fontSize: 11, 
-    fontWeight: '800', 
-    color: '#94A3B8', 
-    letterSpacing: 1, 
-    marginBottom: 15 
+  tierBadge: {
+    backgroundColor: '#DBE3EC',
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 8,
+    alignSelf: 'flex-start',
   },
-  topicItem: { 
-    flexDirection: 'row', 
-    alignItems: 'center', 
-    justifyContent: 'space-between', 
-    paddingVertical: 18,
-    borderBottomWidth: 0, // In the image these are clean rows
+  tierText: {
+    fontSize: 9,
+    color: '#4A5568',
+    fontWeight: '700',
+    letterSpacing: 0.3,
   },
-  topicText: { fontSize: 15, fontWeight: '600', color: '#475569' },
-  helpFooter: { 
-    backgroundColor: 'rgba(227, 242, 253, 0.5)', 
-    borderRadius: 28, 
-    padding: 25,
-    borderWidth: 1, borderColor: '#D9EEFA'
+  searchContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#F3F6F9',
+    marginHorizontal: 18,
+    borderRadius: 9999,
+    paddingHorizontal: 16,
+    height: 52,
+    marginBottom: 20,
+    borderWidth: 1,
+    borderColor: '#E2E8F0',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.03,
+    shadowRadius: 2,
+    elevation: 1,
   },
-  helpTitle: { fontSize: 19, fontWeight: '800', color: '#1E293B' },
-  helpSub: { fontSize: 14, color: '#64748B', marginTop: 8, lineHeight: 20 },
-  footerBtns: { flexDirection: 'row', marginTop: 25, justifyContent: 'space-between' },
-  chatBtn: { 
-    flex: 0.48, backgroundColor: '#0EA5E9', height: 50, 
-    borderRadius: 14, flexDirection: 'row', 
-    justifyContent: 'center', alignItems: 'center' 
+  searchIcon: {
+    marginRight: 10,
   },
-  chatBtnText: { color: '#FFF', fontWeight: '700', marginLeft: 8 },
-  emailBtn: { 
-    flex: 0.48, backgroundColor: '#FFF', height: 50, borderRadius: 14, 
-    flexDirection: 'row', justifyContent: 'center', alignItems: 'center',
-    shadowColor: '#000', shadowOpacity: 0.05, shadowRadius: 5, elevation: 2
+  searchInput: {
+    flex: 1,
+    color: '#2D3748',
+    fontSize: 14,
+    fontWeight: '500',
   },
-  emailBtnText: { color: '#1E293B', fontWeight: '700', marginLeft: 8 },
+  filterButton: {
+    padding: 4,
+  },
+  sectionHeader: {
+    fontSize: 12,
+    fontWeight: '800',
+    color: '#4A5568',
+    letterSpacing: 0.8,
+    marginHorizontal: 22,
+    marginBottom: 12,
+  },
+  actionsContainer: {
+    paddingHorizontal: 18,
+    gap: 14,
+    marginBottom: 18,
+  },
+  actionCard: {
+    backgroundColor: '#FFF',
+    borderRadius: 18,
+    padding: 18,
+    position: 'relative',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.02,
+    shadowRadius: 3,
+    elevation: 1,
+  },
+  cardTop: {
+    flexDirection: 'row',
+  },
+  iconWrapper: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 14,
+  },
+  cardTextWrapper: {
+    flex: 1,
+    paddingRight: 60, // Space so text doesn't clash with buttons
+  },
+  titleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    gap: 6,
+    marginBottom: 4,
+  },
+  cardTitle: {
+    fontSize: 15,
+    fontWeight: '700',
+    color: '#2D3748',
+  },
+  titleBadge: {
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    borderRadius: 4,
+  },
+  titleBadgeText: {
+    fontSize: 8,
+    fontWeight: '900',
+  },
+  cardSubtitle: {
+    fontSize: 12,
+    color: '#718096',
+    lineHeight: 16,
+  },
+  authRequirementText: {
+    fontSize: 9,
+    fontWeight: '700',
+    color: '#A0AEC0',
+    marginTop: 14,
+    letterSpacing: 0.5,
+  },
+  rankButtonRow: {
+    flexDirection: 'row',
+    position: 'absolute',
+    top: 18,
+    right: 18,
+    gap: 4,
+  },
+  rankUpBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#0F697C',
+    paddingVertical: 5,
+    paddingHorizontal: 8,
+    borderRadius: 8,
+    gap: 3,
+  },
+  rankUpText: {
+    fontSize: 10,
+    color: '#FFF',
+    fontWeight: '700',
+  },
+  rankDownBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#E2E8F0',
+    paddingVertical: 5,
+    paddingHorizontal: 8,
+    borderRadius: 8,
+    gap: 3,
+  },
+  rankDownText: {
+    fontSize: 10,
+    color: '#4A5568',
+    fontWeight: '700',
+  },
+  cardChevron: {
+    position: 'absolute',
+    top: 24,
+    right: 18,
+    backgroundColor: '#EDF2F7',
+    width: 28,
+    height: 28,
+    borderRadius: 14,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  importantNotice: {
+    backgroundColor: '#FFFAF0',
+    borderWidth: 1.5,
+    borderColor: '#FEEBC8',
+    borderRadius: 18,
+    marginHorizontal: 18,
+    padding: 16,
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: 10,
+  },
+  noticeText: {
+    flex: 1,
+    color: '#DD6B20',
+    fontSize: 12,
+    lineHeight: 16,
+    fontWeight: '700',
+  },
 });
