@@ -29,6 +29,8 @@ import Wallet from './src/screens/Wallet';
 import Profile from './src/screens/Profile';
 
 import Account from './src/screens/Account';
+import Restricted from './src/screens/Restricted';
+import Search from './src/screens/Search';
 
 import Settings from './src/screens/Settings';
 
@@ -108,6 +110,8 @@ export default function App() {
         <Stack.Screen name="Settings" component={Settings} />
 
         <Stack.Screen name="Account" component={Account} />
+        <Stack.Screen name="Restricted" component={Restricted} />
+        <Stack.Screen name="Search" component={Search} />
 
         <Stack.Screen name="GettingStarted" component={GettingStarted} />
 
